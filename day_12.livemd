@@ -1,0 +1,162 @@
+# Day 12
+
+## Description
+
+https://adventofcode.com/2021/day/12
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"BC-gt\ngt-zf\nend-KH\nend-BC\nso-NL\nso-ly\nstart-BC\nNL-zf\nend-LK\nLK-so\nly-KH\nNL-bt\ngt-NL\nstart-zf\nso-zf\nly-BC\nBC-zf\nzf-ly\nly-NL\nly-LK\nIA-bt\nbt-so\nui-KH\ngt-start\nKH-so\n"} -->
+
+get the raw input here
+
+```elixir
+input = IO.getn("input", 999_999_999_999_999_999_999_999_999)
+```
+
+parse the input here
+
+```elixir
+connections =
+  input
+  |> String.split("\n", trim: true)
+  |> Enum.map(&String.split(&1, "-"))
+
+reversed_connections = Enum.map(connections, &Enum.reverse/1)
+
+graph =
+  (connections ++ reversed_connections)
+  |> Enum.group_by(fn [source, _] -> source end)
+  |> Map.new(fn {source, destinations} ->
+    {source, Enum.map(destinations, fn [_, dest] -> dest end)}
+  end)
+```
+
+## Part 1
+
+```elixir
+defmodule Day12.Part1 do
+  def count_exit_paths(graph) do
+    count_exit_paths(graph, "start", MapSet.new())
+  end
+
+  defp count_exit_paths(_, "end", _), do: 1
+
+  defp count_exit_paths(graph, cave, visited_caves) do
+    if small_cave?(cave) and MapSet.member?(visited_caves, cave) do
+      0
+    else
+      visited_caves = MapSet.put(visited_caves, cave)
+
+      graph
+      |> Map.get(cave, [])
+      |> Enum.map(&count_exit_paths(graph, &1, visited_caves))
+      |> Enum.sum()
+    end
+  end
+
+  defp small_cave?(cave), do: String.downcase(cave) == cave
+end
+
+Day12.Part1.count_exit_paths(graph)
+```
+
+## Part 2
+
+```elixir
+defmodule Day12.Tree do
+  def new(), do: %{}
+
+  def insert_path(tree, [source, dest]) do
+    tree = Map.put_new(tree, source, new())
+
+    Map.update!(tree, source, fn destinations ->
+      Map.merge(destinations, %{dest => %{}})
+    end)
+  end
+
+  def insert_path(tree, [source | path]) do
+    tree = Map.put_new(tree, source, new())
+
+    Map.update!(tree, source, fn destinations ->
+      new_destinations = insert_path(destinations, path)
+      Map.merge(destinations, new_destinations)
+    end)
+  end
+
+  def count_paths(tree) when map_size(tree) == 0, do: 1
+
+  def count_paths(tree) do
+    tree
+    |> Enum.map(fn {_, destinations} -> count_paths(destinations) end)
+    |> Enum.sum()
+  end
+end
+
+defmodule Day12.Part2 do
+  alias Day12.Tree
+
+  def find_exit_paths(graph) do
+    small_caves = find_small_caves(graph)
+
+    Enum.reduce(small_caves, Tree.new(), fn small_cave, paths ->
+      graph
+      |> find_exit_paths("start", MapSet.new(), small_cave, [])
+      |> Enum.reduce(paths, fn current_path, paths -> Tree.insert_path(paths, current_path) end)
+    end)
+  end
+
+  defp find_exit_paths(_, "end", _, _, path),
+    do:
+      ["end" | path]
+      |> Enum.reverse()
+      |> then(fn path -> MapSet.new([path]) end)
+
+  defp find_exit_paths(graph, cave, visited_caves, cave, path) do
+    case {MapSet.member?(visited_caves, cave), MapSet.member?(visited_caves, {cave, :twice})} do
+      {true, true} ->
+        MapSet.new()
+
+      {true, false} ->
+        visited_caves = MapSet.put(visited_caves, {cave, :twice})
+
+        find_exit_paths_from(graph, cave, visited_caves, cave, path)
+
+      {false, _} ->
+        visited_caves = MapSet.put(visited_caves, cave)
+
+        find_exit_paths_from(graph, cave, visited_caves, cave, path)
+    end
+  end
+
+  defp find_exit_paths(graph, cave, visited_caves, small_cave, path) do
+    if small_cave?(cave) and MapSet.member?(visited_caves, cave) do
+      MapSet.new()
+    else
+      visited_caves = MapSet.put(visited_caves, cave)
+
+      find_exit_paths_from(graph, cave, visited_caves, small_cave, path)
+    end
+  end
+
+  defp find_exit_paths_from(graph, cave, visited_caves, small_cave, path) do
+    graph
+    |> Map.get(cave, [])
+    |> Enum.map(&find_exit_paths(graph, &1, visited_caves, small_cave, [cave | path]))
+    |> Enum.reduce(&MapSet.union/2)
+  end
+
+  defp small_cave?(cave), do: String.downcase(cave) == cave
+
+  def find_small_caves(graph) do
+    graph
+    |> Enum.filter(fn {source, _} -> small_cave?(source) end)
+    |> Enum.map(&elem(&1, 0))
+    |> Enum.filter(&(&1 not in ["start", "end"]))
+  end
+end
+
+graph
+|> Day12.Part2.find_exit_paths()
+|> Day12.Tree.count_paths()
+```

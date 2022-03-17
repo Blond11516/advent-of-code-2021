@@ -1,0 +1,192 @@
+# Day 11
+
+## Description
+
+https://adventofcode.com/2021/day/11
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"8826876714\n3127787238\n8182852861\n4655371483\n3864551365\n1878253581\n8317422437\n1517254266\n2621124761\n3473331514\n"} -->
+
+get the raw input here
+
+```elixir
+input = IO.getn("input", 999_999_999_999_999_999_999_999_999)
+```
+
+parse the input here
+
+```elixir
+octopi =
+  input
+  |> String.split("\n", trim: true)
+  |> Enum.with_index()
+  |> Enum.map(fn {line, x} ->
+    line
+    |> String.split("", trim: true)
+    |> Enum.with_index()
+    |> Enum.map(fn {energy, y} -> {{x, y}, String.to_integer(energy)} end)
+  end)
+  |> List.flatten()
+  |> Map.new()
+```
+
+## Part 1
+
+```elixir
+defmodule Day11.Part1 do
+  @coordinates_list for x <- 0..9, y <- 0..9, do: {x, y}
+
+  def run(octopi, steps) do
+    1..steps//1
+    |> Enum.reduce({octopi, 0}, fn _, {octopi, flashes} ->
+      run_step(octopi, flashes)
+    end)
+    |> then(&elem(&1, 1))
+  end
+
+  defp get_neighbors({x, y}) do
+    for neighbor_x <- (x - 1)..(x + 1),
+        neighbor_y <- (y - 1)..(y + 1),
+        neighbor_x >= 0,
+        neighbor_y >= 0,
+        neighbor_x < 10,
+        neighbor_y < 10,
+        {neighbor_x, neighbor_y} != {x, y} do
+      {neighbor_x, neighbor_y}
+    end
+  end
+
+  defp increase_energy(point, octopi) do
+    octopi =
+      Map.update!(octopi, point, fn
+        energy when is_integer(energy) ->
+          energy + 1
+
+        :flashed ->
+          :flashed
+      end)
+
+    if octopi[point] == 10 do
+      point
+      |> get_neighbors()
+      |> Enum.reduce(octopi, fn neighbor, octopi ->
+        increase_energy(neighbor, octopi)
+      end)
+      |> Map.put(point, :flashed)
+    else
+      octopi
+    end
+  end
+
+  defp run_step(octopi, total_flashes) do
+    {octopi, flashes} =
+      @coordinates_list
+      |> Enum.reduce(octopi, &increase_energy/2)
+      |> reset_flashes()
+
+    {octopi, total_flashes + flashes}
+  end
+
+  defp reset_flashes(octopi) do
+    flashes =
+      Enum.count(octopi, fn
+        {_, :flashed} -> true
+        _ -> false
+      end)
+
+    octopi =
+      Map.new(octopi, fn
+        {point, :flashed} -> {point, 0}
+        octopus -> octopus
+      end)
+
+    {octopi, flashes}
+  end
+end
+
+Day11.Part1.run(octopi, 100)
+```
+
+## Part 2
+
+```elixir
+defmodule Day11.Part2 do
+  @coordinates_list for x <- 0..9, y <- 0..9, do: {x, y}
+
+  def run(octopi) do
+    1
+    |> Stream.iterate(&(&1 + 1))
+    |> Enum.reduce_while({octopi, 0}, fn step, {octopi, flashes} ->
+      {octopi, stepped_flashes} = run_step(octopi, flashes)
+
+      if flashes + 100 == stepped_flashes do
+        {:halt, step}
+      else
+        {:cont, {octopi, stepped_flashes}}
+      end
+    end)
+  end
+
+  defp get_neighbors({x, y}) do
+    for neighbor_x <- (x - 1)..(x + 1),
+        neighbor_y <- (y - 1)..(y + 1),
+        neighbor_x >= 0,
+        neighbor_y >= 0,
+        neighbor_x < 10,
+        neighbor_y < 10,
+        {neighbor_x, neighbor_y} != {x, y} do
+      {neighbor_x, neighbor_y}
+    end
+  end
+
+  defp increase_energy(point, octopi) do
+    octopi =
+      Map.update!(octopi, point, fn
+        energy when is_integer(energy) ->
+          energy + 1
+
+        :flashed ->
+          :flashed
+      end)
+
+    if octopi[point] == 10 do
+      point
+      |> get_neighbors()
+      |> Enum.reduce(octopi, fn neighbor, octopi ->
+        increase_energy(neighbor, octopi)
+      end)
+      |> Map.put(point, :flashed)
+    else
+      octopi
+    end
+  end
+
+  defp run_step(octopi, total_flashes) do
+    {octopi, flashes} =
+      @coordinates_list
+      |> Enum.reduce(octopi, &increase_energy/2)
+      |> reset_flashes()
+
+    {octopi, total_flashes + flashes}
+  end
+
+  defp reset_flashes(octopi) do
+    flashes =
+      Enum.count(octopi, fn
+        {_, :flashed} -> true
+        _ -> false
+      end)
+
+    octopi =
+      Map.new(octopi, fn
+        {point, :flashed} -> {point, 0}
+        octopus -> octopus
+      end)
+
+    {octopi, flashes}
+  end
+end
+
+Day11.Part2.run(octopi)
+```

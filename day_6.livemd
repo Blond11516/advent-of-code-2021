@@ -1,0 +1,81 @@
+# Day 6
+
+## Description
+
+https://adventofcode.com/2021/day/6
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"3,5,1,5,3,2,1,3,4,2,5,1,3,3,2,5,1,3,1,5,5,1,1,1,2,4,1,4,5,2,1,2,4,3,1,2,3,4,3,4,4,5,1,1,1,1,5,5,3,4,4,4,5,3,4,1,4,3,3,2,1,1,3,3,3,2,1,3,5,2,3,4,2,5,4,5,4,4,2,2,3,3,3,3,5,4,2,3,1,2,1,1,2,2,5,1,1,4,1,5,3,2,1,4,1,5,1,4,5,2,1,1,1,4,5,4,2,4,5,4,2,4,4,1,1,2,2,1,1,2,3,3,2,5,2,1,1,2,1,1,1,3,2,3,1,5,4,5,3,3,2,1,1,1,3,5,1,1,4,4,5,4,3,3,3,3,2,4,5,2,1,1,1,4,2,4,2,2,5,5,5,4,1,1,5,1,5,2,1,3,3,2,5,2,1,2,4,3,3,1,5,4,1,1,1,4,2,5,5,4,4,3,4,3,1,5,5,2,5,4,2,3,4,1,1,4,4,3,4,1,3,4,1,1,4,3,2,2,5,3,1,4,4,4,1,3,4,3,1,5,3,3,5,5,4,4,1,2,4,2,2,3,1,1,4,5,3,1,1,1,1,3,5,4,1,1,2,1,1,2,1,2,3,1,1,3,2,2,5,5,1,5,5,1,4,4,3,5,4,4\n"} -->
+
+get the raw input here
+
+```elixir
+input = IO.getn("input", 999_999_999_999_999_999_999_999_999)
+```
+
+parse the input here
+
+```elixir
+fish =
+  input
+  |> String.trim()
+  |> String.split(",", trim: true)
+  |> Enum.map(&String.to_integer/1)
+```
+
+## Part 1
+
+```elixir
+move_from_previous_day = fn days_to_reproduction, current_population, previous_population ->
+  previous_count = Map.get(previous_population, rem(days_to_reproduction + 1, 9), 0)
+  Map.put(current_population, days_to_reproduction, previous_count)
+end
+
+update_population = fn population ->
+  previous_0_count = Map.get(population, 0, 0)
+
+  0..8
+  |> Enum.reduce(%{}, fn days_to_reproduction, acc ->
+    move_from_previous_day.(days_to_reproduction, acc, population)
+  end)
+  |> Map.update(6, previous_0_count, &(&1 + previous_0_count))
+end
+
+initial_population =
+  fish
+  |> Enum.frequencies()
+
+1..80
+|> Enum.reduce(initial_population, fn _, population -> update_population.(population) end)
+|> Map.values()
+|> Enum.sum()
+```
+
+## Part 2
+
+```elixir
+move_from_previous_day = fn days_to_reproduction, current_population, previous_population ->
+  previous_count = Map.get(previous_population, rem(days_to_reproduction + 1, 9), 0)
+  Map.put(current_population, days_to_reproduction, previous_count)
+end
+
+update_population = fn population ->
+  previous_0_count = Map.get(population, 0, 0)
+
+  0..8
+  |> Enum.reduce(%{}, fn days_to_reproduction, acc ->
+    move_from_previous_day.(days_to_reproduction, acc, population)
+  end)
+  |> Map.update(6, previous_0_count, &(&1 + previous_0_count))
+end
+
+initial_population =
+  fish
+  |> Enum.frequencies()
+
+1..256
+|> Enum.reduce(initial_population, fn _, population -> update_population.(population) end)
+|> Map.values()
+|> Enum.sum()
+```

@@ -1,0 +1,126 @@
+# Day 24
+
+## Description
+
+https://adventofcode.com/2021/day/24
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"inp w\nadd z w\nmod z 2\ndiv w 2\nadd y w\nmod y 2\ndiv w 2\nadd x w\nmod x 2\ndiv w 2\nmod w 2"} -->
+
+get the raw input here
+
+```elixir
+input = IO.getn("input", 999_999_999_999_999_999_999_999_999)
+```
+
+parse the input here
+
+```elixir
+defmodule Alu.Instruction do
+  @enforce_keys ~w(operation args)a
+  defstruct ~w(operation args)a
+
+  def parse(instruction_code) do
+    symbols = String.split(instruction_code, " ", trim: true)
+
+    operation_name = hd(symbols)
+    args = symbols |> tl() |> Enum.map(&parse_arg/1)
+
+    operation = get_operation(operation_name)
+    %__MODULE__{operation: operation, args: args}
+  end
+
+  defp parse_arg(arg) do
+    case Integer.parse(arg) do
+      :error -> String.to_existing_atom(arg)
+      {val, _} -> val
+    end
+  end
+
+  defp get_operation("inp"), do: &inp_operation/1
+  defp get_operation("add"), do: &add_operation/2
+  defp get_operation("mul"), do: &mul_operation/2
+  defp get_operation("div"), do: &div_operation/2
+  defp get_operation("mod"), do: &mod_operation/2
+  defp get_operation("eql"), do: &eql_operation/2
+
+  defp inp_operation(_), do: Alu.Input.get_next()
+  defp add_operation(a, b), do: a + b
+  defp mul_operation(a, b), do: a * b
+  defp div_operation(a, b), do: div(a, b)
+  defp mod_operation(a, b), do: rem(a, b)
+  defp eql_operation(a, b) when a == b, do: 1
+  defp eql_operation(_, _), do: 0
+end
+
+instructions =
+  input
+  |> String.split("\n", trim: true)
+  |> Enum.map(&Alu.Instruction.parse/1)
+```
+
+## Part 1
+
+```elixir
+defmodule Alu.Input do
+  use Agent
+
+  def start_link do
+    Agent.start_link(fn -> nil end, name: __MODULE__)
+  end
+
+  def set_input(input) do
+    numbers =
+      input
+      |> String.graphemes()
+      |> Enum.map(&String.to_integer/1)
+
+    Agent.update(__MODULE__, fn _ -> numbers end)
+  end
+
+  def get_next do
+    Agent.get_and_update(__MODULE__, fn [head | tail] -> {head, tail} end)
+  end
+end
+
+defmodule Alu do
+  def is_valid_model_number?(instructions, model_number) do
+    Alu.Input.set_input(model_number)
+
+    %{z: z} = run(instructions, %{w: 0, x: 0, y: 0, z: 0})
+
+    z == 0
+  end
+
+  defp run([], state), do: state
+
+  defp run([{operation, args} | instructions], state) do
+    destination = hd(args)
+
+    values =
+      Enum.map(args, fn
+        arg when is_atom(arg) -> state[arg]
+        arg -> arg
+      end)
+
+    result = apply(operation, values)
+
+    state = Map.put(state, destination, result)
+
+    run(instructions, state)
+  end
+end
+
+Enum.find(99_999_999_999_999..11_111_111_111_111//-1, fn _, model_number ->
+  string_model_number = Integer.to_string(model_number)
+
+  Alu.is_valid_model_number?(instructions, string_model_number)
+end)
+```
+
+## Part 2
+
+```elixir
+
+```

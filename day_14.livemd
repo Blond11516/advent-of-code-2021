@@ -1,0 +1,124 @@
+# Day 14
+
+## Description
+
+https://adventofcode.com/2021/day/14
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"OOVSKSPKPPPNNFFBCNOV\n\nBC -> C\nPP -> O\nSK -> K\nKH -> N\nOK -> S\nPC -> O\nVP -> K\nCF -> K\nHC -> H\nFV -> V\nPB -> P\nNK -> H\nCK -> F\nFH -> H\nSV -> B\nNH -> C\nCP -> S\nHP -> O\nHS -> O\nBK -> B\nKC -> P\nVV -> B\nOF -> O\nKP -> V\nFO -> V\nFK -> V\nVH -> K\nKB -> P\nKF -> H\nSH -> S\nHF -> O\nBB -> F\nFC -> O\nSO -> S\nBS -> O\nHH -> C\nBO -> S\nCO -> F\nVC -> V\nKS -> N\nOC -> N\nFP -> P\nHN -> B\nHV -> V\nHO -> P\nKO -> C\nSF -> H\nNO -> N\nPS -> C\nBP -> K\nSC -> C\nNP -> C\nCH -> V\nKV -> B\nHK -> V\nOP -> V\nSP -> V\nNC -> V\nFF -> B\nCC -> V\nCS -> F\nSB -> C\nOS -> C\nFN -> O\nCV -> P\nOH -> H\nOO -> P\nPO -> F\nNS -> H\nVB -> K\nOV -> K\nPH -> H\nBH -> V\nSS -> B\nPK -> F\nVK -> O\nBN -> V\nVF -> O\nPF -> H\nVS -> K\nON -> V\nBF -> F\nCN -> F\nVO -> B\nFS -> K\nOB -> B\nPN -> H\nNF -> O\nVN -> P\nBV -> S\nNV -> V\nFB -> V\nNB -> P\nCB -> B\nKK -> S\nNN -> F\nSN -> B\nHB -> P\nPV -> S\nKN -> S\n"} -->
+
+get the raw input here
+
+```elixir
+input = IO.getn("input", 999_999_999_999_999_999_999_999_999)
+```
+
+parse the input here
+
+```elixir
+[polymer, rules] = String.split(input, "\n\n", trim: true)
+
+rules =
+  for rule <- String.split(rules, "\n", trim: true),
+      [pair, result] = String.split(rule, " -> ") do
+    {pair, result}
+  end
+
+{polymer, rules}
+```
+
+## Part 1
+
+```elixir
+do_step = fn polymer ->
+  polymer
+  |> String.graphemes()
+  |> Enum.chunk_every(2, 1, :discard)
+  |> Enum.map(fn pair ->
+    pair = Enum.join(pair, "")
+
+    case Enum.find(rules, fn {rule_pair, _} -> rule_pair == pair end) do
+      nil -> String.first(pair)
+      {_, new_element} -> String.first(pair) <> new_element
+    end
+  end)
+  |> Enum.join("")
+  |> then(&(&1 <> String.last(polymer)))
+end
+
+{{_, min}, {_, max}} =
+  1..10
+  |> Enum.reduce(polymer, fn _, polymer -> do_step.(polymer) end)
+  |> String.graphemes()
+  |> Enum.frequencies()
+  |> IO.inspect()
+  |> Enum.min_max_by(&elem(&1, 1))
+
+max - min
+```
+
+## Part 2
+
+```elixir
+initial_frequencies = Map.new(rules, fn {pair, _} -> {pair, 0} end)
+
+initial_frequencies =
+  polymer
+  |> String.graphemes()
+  |> Enum.chunk_every(2, 1, :discard)
+  |> Enum.map(&Enum.join(&1, ""))
+  |> Enum.frequencies()
+  |> then(fn frequencies -> Map.merge(initial_frequencies, frequencies) end)
+
+do_step = fn frequencies ->
+  Enum.map(rules, fn {pair, new_element} ->
+    [first, second] = String.split(pair, "", trim: true)
+    current_pair_count = frequencies[pair]
+
+    first_new_pair = first <> new_element
+    second_new_pair = new_element <> second
+
+    case {first_new_pair, second_new_pair} do
+      {^pair, _} ->
+        %{
+          second_new_pair => current_pair_count
+        }
+
+      {_, ^pair} ->
+        %{
+          first_new_pair => current_pair_count
+        }
+
+      _ ->
+        %{
+          pair => -current_pair_count,
+          (first <> new_element) => current_pair_count,
+          (new_element <> second) => current_pair_count
+        }
+    end
+  end)
+  |> Enum.reduce(frequencies, fn current, frequencies ->
+    Enum.reduce(current, frequencies, fn {pair, frequency}, frequencies ->
+      Map.update(frequencies, pair, frequency, &(&1 + frequency))
+    end)
+  end)
+end
+
+{{_, min}, {_, max}} =
+  1..40
+  |> Enum.reduce(initial_frequencies, fn _, frequencies ->
+    do_step.(frequencies)
+  end)
+  |> Enum.map(fn {pair, frequency} ->
+    first = String.first(pair)
+    {first, frequency}
+  end)
+  |> Enum.reduce(%{}, fn {element, frequency}, frequencies ->
+    Map.update(frequencies, element, frequency, &(&1 + frequency))
+  end)
+  |> Map.update!(String.last(polymer), &(&1 + 1))
+  |> Enum.min_max_by(&elem(&1, 1))
+
+max - min
+```

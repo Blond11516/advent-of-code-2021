@@ -1,0 +1,174 @@
+# Day 16
+
+## Description
+
+https://adventofcode.com/2021/day/16
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"220D4B80491FE6FBDCDA61F23F1D9B763004A7C128012F9DA88CE27B000B30F4804D49CD515380352100763DC5E8EC000844338B10B667A1E60094B7BE8D600ACE774DF39DD364979F67A9AC0D1802B2A41401354F6BF1DC0627B15EC5CCC01694F5BABFC00964E93C95CF080263F0046741A740A76B704300824926693274BE7CC880267D00464852484A5F74520005D65A1EAD2334A700BA4EA41256E4BBBD8DC0999FC3A97286C20164B4FF14A93FD2947494E683E752E49B2737DF7C4080181973496509A5B9A8D37B7C300434016920D9EAEF16AEC0A4AB7DF5B1C01C933B9AAF19E1818027A00A80021F1FA0E43400043E174638572B984B066401D3E802735A4A9ECE371789685AB3E0E800725333EFFBB4B8D131A9F39ED413A1720058F339EE32052D48EC4E5EC3A6006CC2B4BE6FF3F40017A0E4D522226009CA676A7600980021F1921446700042A23C368B713CC015E007324A38DF30BB30533D001200F3E7AC33A00A4F73149558E7B98A4AACC402660803D1EA1045C1006E2CC668EC200F4568A5104802B7D004A53819327531FE607E118803B260F371D02CAEA3486050004EE3006A1E463858600F46D8531E08010987B1BE251002013445345C600B4F67617400D14F61867B39AA38018F8C05E430163C6004980126005B801CC0417080106005000CB4002D7A801AA0062007BC0019608018A004A002B880057CEF5604016827238DFDCC8048B9AF135802400087C32893120401C8D90463E280513D62991EE5CA543A6B75892CB639D503004F00353100662FC498AA00084C6485B1D25044C0139975D004A5EB5E52AC7233294006867F9EE6BA2115E47D7867458401424E354B36CDAFCAB34CBC2008BF2F2BA5CC646E57D4C62E41279E7F37961ACC015B005A5EFF884CBDFF10F9BFF438C014A007D67AE0529DED3901D9CD50B5C0108B13BAFD6070\n"} -->
+
+get the raw input here
+
+```elixir
+input = IO.getn("input", 999_999_999_999_999_999_999_999_999)
+```
+
+parse the input here
+
+```elixir
+input = String.trim(input)
+
+input_length = String.length(input)
+transmission_length = input_length * 4
+
+transmission = <<String.to_integer(input, 16)::size(transmission_length)>>
+```
+
+## Part 1
+
+```elixir
+defmodule Day16.Part1 do
+  def parse_transmission(transmission), do: parse_packet(transmission, 0)
+
+  defp parse_packet(<<version::3, <<4::3>>, rest::bits>>, sum) do
+    {_value, rest} = parse_literal(rest, <<>>, 1)
+    parse_packet(rest, sum + version)
+  end
+
+  defp parse_packet(
+         <<version::3, <<_type::3>>, <<0::1>>, <<_subpacket_length::15>>, rest::bits>>,
+         sum
+       ) do
+    parse_packet(rest, sum + version)
+  end
+
+  defp parse_packet(<<version::3, <<_::3>>, <<1::1>>, <<_subpacket_count::11>>, rest::bits>>, sum) do
+    parse_packet(rest, sum + version)
+  end
+
+  defp parse_packet(_, sum), do: sum
+
+  defp parse_literal(<<1::1, part::bits-size(4), rest::bits>>, acc, group_count) do
+    acc = <<acc::bits, part::bits>>
+    parse_literal(rest, acc, group_count + 1)
+  end
+
+  defp parse_literal(transmission, acc, group_count) do
+    <<0::1, part::bits-size(4), rest::bits>> = transmission
+    value_size = group_count * 4
+    <<value::size(value_size)>> = <<acc::bits, part::bits>>
+    {value, rest}
+  end
+end
+
+Day16.Part1.parse_transmission(transmission)
+```
+
+## Part 2
+
+```elixir
+defmodule Day16.Part2 do
+  def parse_transmission(transmission) do
+    {value, _} = parse_packet(transmission)
+    value
+  end
+
+  defp parse_packet(<<_::3, <<4::3>>, rest::bits>>) do
+    parse_literal(rest, <<>>, 1)
+  end
+
+  defp parse_packet(<<_::3, <<type::3>>, <<0::1>>, <<subpacket_length::15>>, rest::bits>>) do
+    parse_operator(rest, type, subpacket_length: subpacket_length)
+  end
+
+  defp parse_packet(<<_::3, <<type::3>>, <<1::1>>, <<subpacket_count::11>>, rest::bits>>) do
+    parse_operator(rest, type, subpacket_count: subpacket_count)
+  end
+
+  defp parse_literal(<<1::1, part::bits-size(4), rest::bits>>, acc, group_count) do
+    acc = <<acc::bits, part::bits>>
+    parse_literal(rest, acc, group_count + 1)
+  end
+
+  defp parse_literal(transmission, acc, group_count) do
+    <<0::1, part::bits-size(4), rest::bits>> = transmission
+    value_size = group_count * 4
+    <<value::size(value_size)>> = <<acc::bits, part::bits>>
+    {value, rest}
+  end
+
+  defp parse_operator(transmission, 0, options),
+    do: parse_subpackets(transmission, &Enum.sum/1, options)
+
+  defp parse_operator(transmission, 1, options),
+    do: parse_subpackets(transmission, &Enum.product/1, options)
+
+  defp parse_operator(transmission, 2, options),
+    do: parse_subpackets(transmission, &Enum.min/1, options)
+
+  defp parse_operator(transmission, 3, options),
+    do: parse_subpackets(transmission, &Enum.max/1, options)
+
+  defp parse_operator(transmission, 5, options),
+    do: parse_subpackets(transmission, &greater_than_operation/1, options)
+
+  defp parse_operator(transmission, 6, options),
+    do: parse_subpackets(transmission, &lesser_than_operation/1, options)
+
+  defp parse_operator(transmission, 7, options),
+    do: parse_subpackets(transmission, &equal_operation/1, options)
+
+  defp parse_subpackets(transmission, operation, subpacket_length: subpacket_length) do
+    <<subpackets::bits-size(subpacket_length), rest::bits>> = transmission
+
+    value =
+      Stream.repeatedly(fn -> nil end)
+      |> Enum.reduce_while({subpackets, []}, fn _, {subpackets, values} ->
+        {value, rest} = parse_packet(subpackets)
+        values = [value | values]
+
+        cont_or_halt =
+          if rest == <<>> do
+            :halt
+          else
+            :cont
+          end
+
+        {cont_or_halt, {rest, values}}
+      end)
+      |> then(&elem(&1, 1))
+      |> Enum.reverse()
+      |> operation.()
+
+    {value, rest}
+  end
+
+  defp parse_subpackets(transmission, operation, subpacket_count: subpacket_count) do
+    {rest, values} =
+      1..subpacket_count
+      |> Enum.reduce({transmission, []}, fn _, {subpackets, values} ->
+        {value, rest} = parse_packet(subpackets)
+        {rest, [value | values]}
+      end)
+
+    value =
+      values
+      |> Enum.reverse()
+      |> operation.()
+
+    {value, rest}
+  end
+
+  defp greater_than_operation([first, second]) when first > second, do: 1
+  defp greater_than_operation(_), do: 0
+
+  defp lesser_than_operation([first, second]) when first < second, do: 1
+  defp lesser_than_operation(_), do: 0
+
+  defp equal_operation([first, second]) when first == second, do: 1
+  defp equal_operation(_), do: 0
+end
+
+Day16.Part2.parse_transmission(transmission)
+```

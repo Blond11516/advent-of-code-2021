@@ -1,0 +1,242 @@
+# Day 8
+
+## Description
+
+https://adventofcode.com/2021/day/8
+
+## Input
+
+<!-- livebook:{"livebook_object":"cell_input","name":"input","type":"textarea","value":"fdeba beagfd gbafe dagb dbf ecfad bd dgcaefb fbecgd abfecg | dgba dfb ecadf bdf\ndgfc egdbaf afgcbe eafdbcg bcgad bdg fdbacg gd ecabd bafgc | gd gbd dg febgac\ndfebc bceadf ebacf gdceb fd dfea cdgfba afbgec dfb fdaecbg | cgafbde efbagc faed gecdb\ndbaef fabgd fcaedb cgadf aefbgd cabefg gfb bceagdf bg ebdg | gdbfae geafdbc bafgdce dbgfa\naebgd adg dg dgcabef facedg cfaebd dfbega begca bfgd dbafe | abdecf eafbd fdgb ebdfgca\nbae febac abcgf eabfgd cbagfd gefcba abedfcg efcda eb becg | fcgab gafbed aedcfbg eb\nedbcg ba afcdeg gbaedf gcabdf eabf bagde bga deabgcf edfga | aebf ab bdfecag abfe\ndbae dgfec egfbd fbgaed feb fcabdg be bfgda facebgd baefcg | bagecf efb eb fbcgad\ncdagbef cd bdgcf efcbg adbgf cdga egdabf acbdfg cdf caebfd | fbdga fcd fcd adcg\nabceg dbgca acfd ebagfdc dbecfg gdfbea dc dcg abfdcg gfbad | cdg dbcagf acdf gbcdef\nbcdag acdgbef ebcdag facd dfgbe cfg bfagdc fc fbcgd bgfaec | fc dafbcg fc cbdgae\nca feacgb cedfgb bgaed gbaec acefdgb bfcge eafgcd acg fbac | ca cag gac becga\ngbdcfa afdcb cebd fadce cbgfdea aec cdebfa ce caegfb daegf | aedfbgc eca eca cebd\ncb dcb fdbegc bgaed fcba dacgfe efcadb dceaf eacgfbd dbaec | cbd cb bagde dcb\ndebgf gaecdfb gcbef cbgaf fbecag bce bgfcda ce aefc ebdgca | ebcfgad ec gefcba bec\ncdbfega ae cedaf bedgcf ebac efadbg afcedb afe fgadc cdfbe | fabedcg cafbed efa badgcef\naceg bcafgde deacgb fdcgab dacgb eafbcd dgcbe bdfge bce ce | dbfge bdcafg fbdcga ebdfg\nefcbda fcgbe efdgc efgdcab cagbe cbf bagf ecagdb bacefg fb | fgab aecgb acfgbe agecfbd\nbcgd egafb adgbcf cafged cegadfb gd dgf dbfag dfeacb dcabf | adbcf dg gd dgf\nbgeca fgcbe fcgd egfbd bcgdfe fc agbdef ecf dafgecb bdafec | fc febdag cgfd dfcbgae\nagb dbfa gbafcde afgcbe edfgb bagde cfdegb gbdefa ba caged | bdfa bafd cfdgeba agb\nbdf baefcdg df cafbgd bdcgef bcdeag bcgad cadf gfbad fbeag | ebacfgd facd cdgfbe df\nedagc egbcfad bcfdge agbdcf fbdage dcabg bga bgfdc fbca ba | cebgfda gdcfabe gfcdba bag\nbgaf af bcdfge ecfagd fgcdb beacd gdecbfa bcafd fac bfdgac | bagcedf fbedgc ebfgdc gbfa\nfagbdc fagdeb cebgf cbd ecagdb cade dagcebf dc becdg geabd | gfbadec cdae dbc bcefg\ndgfbeac abfge dcefag cga cgbd baced gc adfebc ecbag aedgbc | bfcaged gac gebaf egdafc\ncfdbe afge fa gdfbeca agfcbd abedgc fac cafbe ecfgab acgeb | adcfgeb bcadfg ebfac cfa\ngebdcf cdbga eag ae dagecbf bgdfe ebgfad gabed dagfec feab | fadgecb fgbced dgcab ega\ngf gcbaf gfdc agf eafcb cadebfg cgfabd dbagc agdcbe egfbda | gf beafc fga fcgd\ncbed ebgad gadbfe bc bcfgea gebacd gceadfb cgfad cbg abcgd | bacdg afbegdc bgc bcagdfe\nfdg dg acgfdbe gafdec cfbdg ebfgc gdeb bdcgef fbegca fbdca | fdg edbg edbg cgfbe\ngfcbaed gfceda cadbg gafdb ca adc fbca dfcabg cedbg aegfdb | ca becadfg dcefga ca\nagfcbd edcabg cdf cdgfabe debgcf fdgca bfac gdcab cf gedaf | fc cdf cf bcagdef\ncdagb bae ea cdfebg febacd egdfb gdacfbe feag aedfbg gdabe | ea gefa agbde afge\ndab cgaedb cafbg faced bdfe bd gfdeca dafgbec fcbda cadbef | db edfb bd dcafe\nbde cbaed dcbf ecbag fcbdae acgfde dgafebc db fbdgea dacfe | cadbe bcdf afebdg dcgfea\nag fgaecd egcbdaf ebacd gad dagbfe cfga fcegd dcbgfe gaced | dag ag gda gacf\nfdaegb dcgefa bfdec geca ge fge cdbafg decbgaf ecdfg cagdf | gdefc cgea dfacgb gedbaf\necgfab cgbdea dgabf dcfb bd dgcabf fgdeacb dba efagd cfabg | dab adb bfdc fcdbag\ndfcae cfegbd ade cdeabg egacdf gcfde da becfadg agfd efcba | ade aed dfga ade\nfdgeab adcbgfe edfca cebad gdbace dgcb beafgc bac cb gdeba | bdcea bgdc dagcfeb abc\ncabdge fdgae fbgc fedgcb gfebacd dfbeg bf bdf ecgbd adecfb | fb aegfbcd bdf fbacged\ndfbgec feacgdb ca adgec cda ecba gdaef degbc abfdgc gdceab | ca dabfegc ca acdeg\nabd fbagec gfdbea dagc ad fcdbega bafcdg facbg ecbdf fbcad | edfagb bcedf dba fbdcag\nabf ebfdcg fgcdbae faegc bdgacf bfdec bade ceafdb ba eacbf | fab fbdaecg dcabfg ba\nebcgf aedcb gbaecfd gd cgdeb cadfeb edga bdfgca cbgead cdg | adge fgbec cgd dgbcfa\ngdcaef dcgbe fbcdage bacge aec ea bfea bcafg aegbcf cfdgab | bfea gfecadb gbafc gedafcb\nfacg aebfg ecfba bfaecd fbdge badcfeg cfgeba ega cadebg ag | fgca bdgef gafc acgf\ndacefg eb bdecf acbfge ecb bfcda decgf cgdebaf cbfgde gbde | bdge ecbfgd feacbgd efdabcg\nbd fbd bfcgde egbaf dafgceb cefgda fcbdae dfgeb gcdb cgfde | dfbceag bd fgbdec gdbfec\ngbdacf dacebf adgfbe aedfb acgbedf eacf ca dac aedcb bedgc | ca cad fcbdaeg bdagcf\ncbd egdba ebfdga efadc gcdfabe bc decbga dbaec gfbecd bcag | cdb egdba acbg acgb\neacb fdeab fgcade cbdaf dea cfebgda ae bdegf cebdaf fgdcab | ae facbdg bdfecga baec\ncfd adbce cf bcdafg fcedb cbedfag fdgbe faegdb fceg gdcbef | fegc cf gfdabe adbcgf\ngfbdeac efdgac gcfb edbagf cebda cafeb abf cgfeab bf gacfe | abfce cadefgb abf abfce\ndcfge fabgec beg abdg gbaedcf gcdbe bg ebcad cfdaeb ebagcd | bgdaec gbe gb gb\naecb daefbg ebdfc aedfcg efbad cdgabfe cfgdb fdbeca ce cfe | fce ce aceb ec\ngadebf fg fga acbgfe agbcd deabf bdagf cedbfa dbafceg dfeg | fg afg gaf fg\nafed cdbge dag gabfe fagbde gadbcf adebg ad agfecb gedfabc | da geabf fgcbad gad\nde gcdeaf agbcedf efacg gdcea efgacb edc fegd adcgb daecbf | edc ecd de dgceaf\nbecadgf edagfc fcg edbagf cg adfgcb dfega acgfe gecd bfeca | cgf cg gcde cg\ncfaed agcedf db dfcbe bcd dbefca dcbgfa gbecf dcaegfb bdea | dagbcef bcd fegcb eabd\nfcdagb ca aedfcgb fca gafbd abegfd afbcg fbgce aefcbd acdg | acf adcg efbgc ca\nda dcefgba cdgef egcabf baed fagbcd fadbge dag faebg agedf | fcegab abde gad dbgfae\nfbdec cdaeb dac dbage egca ecbdgaf debcga ca abdgfe dagcbf | efbcd adgefbc gbefacd ca\nbfdecg dbaecg fcd bedaf fc dcbafg cegf fcdeb cbdfage bcdeg | egcf fbade cfd dbafgec\ncg cadegb badfce gfdc agfbc cadbf egafb dbecfag cbg dagcbf | bagdcf fgcbda cbg dgcf\nacgbf afbged fcadgb dcefg gebcaf ad adcb acdefbg cdgfa daf | dgcefab egbfacd gabefc cdab\ndgb ecfbd fbgcd aegdbcf adcfg gfba gbaced acfgde fcabgd bg | dbg gb efdcb dbgcae\nfebg bcfaed efagdc fba ebafgc aecbgdf fegca bcgad bf acfbg | febgacd bfeg afb fb\nadc ebdfacg ad badec efbdcg fade bcgdaf faedbc baecg cbfde | da edgbcf da edfa\nafbgd agdcef dc cda bedcag cgaefb fdec cgfae fgadc deabgfc | cd cfage cedf fecd\nfacbe edcbf ebdgac fa dfgeac gaebc acf cfaegb dcfegba bfag | ebfac gcebad fac fa\ncfebdag daecfb bg gecbdf ebagc ecagd gbe abfgec gabf ebfac | gbe afcbe gecdabf gb\nbgefdca fecbgd ec bce cedab ecaf bdeafg cgbda dbaef bcfdae | bfecgd cefa fdeabc ce\ngedbac cbade edfgbac gabfe cfaeb caf fc dcbf cdfbea cdefga | acf dafcbe cdfb dfabceg\ncfgaed cbda abgfde cea abcdfeg adcgbe ac fcbge egdab eagbc | bcda ac ac ac\ncbfaged afdgec ed fdea edcfg dce fdgac bfdagc fecbg ebcdga | fcabgd bfegc fcedag gfdabc\ngafec afegb bgafed bafd fb egbda edbgac cedgfb ebf bedgfca | cgefbd bef edcgfb fb\ncf gfc fecgd cebf dgecbaf faedgb afbgcd dcaeg efbdg dbcefg | fecb edfgcb ebgafd bfadgc\nea gafecd fbgac fcedb defcab fbeca bfdcge baed dabfceg fae | gbefcd ebda beda fae\nafdgb acg aefdgc cebgd ac begdfac dacbfg gbcad abgfde cfab | abgdc abcf bacf ca\ncdbga acedbg gefcd abdf fac af bfgaec ecfagdb gfdac bcdfag | caf bfad fa caf\nedcagf feadg dab adgeb gceab dgfabc fdbe befcadg fagbed bd | dab dgabef dgebcaf bd\nbga baedg abdc ab gefdb gadceb gcdae aedgcbf gcebaf cfdega | gab cdab dagcfeb dafebgc\nafb eabdgf eafgcb gcdabe ecfa edbgfac fbdgc fa bacfg ceagb | cefa fab baf aebcgfd\nda gdbcef facdeg dafbc efdcb adc edba gbcfa acdbef deafcbg | da ad defbgc ad\nacbg ecbdg ecbgfda gdabec bg daefbc cefgd dceba dgb afebdg | bg edfcg gb efcgdab\ndgbeca befcd gcfaed edgac agefcbd ceadb ba abe gcba daebgf | aeb acbg efgadc becgda\ncgbafde ed bdce gde bdaegc eagbfd cgbad eadgc facbgd cgfae | gfdacbe fdegacb de deg\ndeacfbg afc dfcea cgaed gdbcea cf dcfg fbeacg gdfcae baedf | dbcaefg fdcg acgdebf gdfc\ngca fagdbe cedbgaf dgbc gdaec badeg edafc gc abedcg afbgec | gac dgbae gdcb bgdc\ncdfeab dbcfa bdg bg fgbc adcgb gdfeab ecgbdfa gdeca cfadgb | bedgacf acbdfg gdb bg\ngbfec bgfde gacedb fcgea cb cgeafd bcg aebgcf gdaebcf afbc | cafbge abfc adbgfec bcg\nedgf bcgef edcgfb gfcabd fbdcae ef efc acebg gcbdfea fgcdb | fdge fe dabcfg aefdcb\ncdbafge agdebc bcg dfbgac cged ebagd degafb bfcea gc caegb | bcg edbga fcgdab debga\nea dagfbe fae fcdgbe gfaecbd decfb dacbfe abec gdafc caedf | defcba ebgdafc ceab gbcafde\ndg cefga bfaed fdecgb bdag bdaecfg fgedab edg adfecb efdag | dgab gfcae bedgfc cgfdeab\ndegcfb bdcfg edgb cdfab bcadgef fgcdea gdf becfg dg egfbca | gd ceabgfd efcbagd bedg\ndfbg bcgeda faecdg dab bfaec dbegacf geafd eabfd agbfde db | dab adfegbc db bd\necfagdb db gadecb dagfb caefgb gbd fbeag facgd bdfe efadgb | bfedagc db dgb cagfd\nedbcga fcdgbe ebcdg bcfage fb bfcgd bgf gcdaf bgfcdea fbde | dgcbf fbg gbf fdgcb\nefagd eb dafcgb ebfad eabdgcf cbed aecfbd egbcfa feb adcbf | be eb eb bfe\nbdge fdabce begfcd gcbdf bd ebfgc fadcg dagecbf dfb bcafge | gfacd dbf bgcaedf dgfca\ngeacf cfb gbfcde dfbga bc fbadgce fgdcba cabgf fdaegb dacb | dfagcb cafdebg acfbdg fcdgeba\nfecdbg gbcaf ebgacfd acgfed gbad gb fbaec afcgd bafdcg fgb | gcbefd egfdbc fgb fgb\nfdce ebagf fdcegb fgacbd dcbeg geadbc cf gebcf gabefdc cbf | edfc cfdgab decbg fc\nadcfeg cfgad efgcdba fecda fec gabcdf ef bacde bfdceg gefa | ef edafc ef fgcdab\nafeb fbegd daefg agdbcfe agdcf ega adbegc dbgafe efcdbg ae | abedcg efbgcd fgcad cdegba\nfdegbca gefbda egbf dbagc gfd bgdaf adgfec fg bfead dfceab | fdg abcdegf gadebf decfgba\ndbcaef debfgc gfebdca bcaed ad baceg dca deaf edfbc dagcfb | acd dafe fbdecg adef\nbeadc fc faedc dbafeg gdfea gafc fegcad cgebadf dfgbec fcd | cdf deacgf gefda cf\nfdaceg edgacb dbcg cda cd ebfad acbeg gdfbace dbaec bcfeag | deabf bcgd cdgb defgca\nfgcebd dgbcae bfcgad ga bga bfcgd gbfda acfg dbafe fbcgead | bedcgf dbfgc gfac acfbgd\ncfaebdg dcg gedbfc gefdba egafcd dc cbde bedfg bcgdf cabgf | dbacfeg feadgb dcbgf fbgdae\nfagcbd fedbg fcabge ebgad cbfdg cfedgab feb fdce dfcgeb ef | cfde fgedb bdgecf ef\nbecgdf efcbda cgbd gdcfe gc gaedf efbcd cfg fbegcad gbfcae | fcg cdefbg gafed efadg\nda adbcgef dacf eadfcb bfcage eafbc ceabd begfda bdceg bda | da da acbedf bagcfe\nagebf adfb fabedg cgafde dga beadfcg cdbeg egbad cfabeg da | dfegba dafgbce egdbc fecbdga\neac fcdabeg gdabc ebadc bcge gfecad deafb bdgfac dgaecb ce | cea ec cegabdf gadcb\ngfedbc gcdfb ecdfga df cfegba defb dbcga gdf cgfbead ecgbf | facbged dfg bfed cfbedag\nagbde bgdfca deacgb agbef aebcgdf afg fbecg aedbfg afed af | daef fga fga gdefab\ngfbac gaecdb baefc fdebgca fgbadc ec adbef efgc fabegc cea | cae eac gfdcbea fceg\nec dagbc cagfbd adbecg bfdge gebcdaf ced gdebc fagced bcea | gdbeca dec agcdb aebc\ngeab ebgdfa eafbd dafbc efdgb aed ae bgcaefd dcegfb aegdcf | ebga ade ebfdg dgafceb\nbdaeg aebcd cgebad dbc cb fecbgd dafce bcgfdea gcab gfdbae | cbga cbag cdb bagc\ndfb egfbdc ceabdfg cfbae fgbade fdbec bd gedfc deafgc cbdg | ebfgdca fdgbec caebdgf db\ndfcaeg bagcefd fceab ad dae faedb fcabed ebfgd fcabeg adcb | dea ad ebgfd da\nafgcd acgebf da agbdfc cad gcdfe dagb dafbec dagbefc abcgf | fgcde beagcfd cebafg da\ncabd bce cb cfbdea adbef agcfbe aebcdfg fabdeg dgcfe fbdec | ebc gfcabe egcfd fedab\nefcbga cgfbaed bcfga ecgbf egdbc deabfc fdgcba fage fce ef | ecgbdaf gdecabf bdceg febcga\ngbcda ad gacfb dba gfacbd fbgdeca aecbfg fdac gfabde bdgce | dab bdgafce bcegd abegdfc\nfcaegb baegdf gfaced gedfa dcebg dbgea agedcbf abdf bga ba | bag fabd bgfcea bga\nebafg gdebafc gedacb gcdefb agbdfc cf gebcd gcf cfde cgbfe | fdgaecb dfbcega cfg fc\nfce cbaedf cgbaedf ec bfega dcea agbdfc bfdegc dacbf cefab | ce efabg faebcd gdecbaf\ndcfbg fd egcdba efcgb bfad cefagd abegdfc gcafdb cabgd fdg | bafd egfbc cdgabf gfebc\nabfegc gecdabf cedb bdg dgcbf gaebdf db fgacd ecfgb egcfdb | bdegaf gfaebd gcefb cdbe\nbafeg febdac ged bfcedg gd cbafedg edcaf gafdce cagd fadge | fgcdae daebgcf dagc fadeg\ncfdegb efdc gcadbe gdbaf ebadgfc fc gdebc dfcgb fgc egcbaf | fc cf cfed cf\naecfgd efgab bdagfc cedf cge agfce afcdg cdeabg dgbaefc ec | gce gce ec cegfadb\neagdbc ga fecbda ecdaf fdgbc abgdcef afdcg fega cag eafgdc | cga ag ag ag\nfabedg cedg cbefga dga gacedf gd fdcga afecg bfdac gabfedc | fgeca gdec fdacg gda\nbegadc gcfeab dgcba defbac gc fbdag agdebcf degc cag abecd | gcde gca cdge cg\nfd dcgba gdbfca afedcgb gbadef cagfe fad dfcb acgfd dacgeb | cbgdea fd cfdb afegbdc\nfb fceab fdeb bgfaced acdfbe gbcafd cdabe abf agcef baecdg | bf fb gdebac bf\ndf fdb egcbd gfed bcaegd abcfg ceadbf egcdbf aegfdcb dbgfc | begdac fdb acefbd dgbec\nbgedfa dg bdcgeaf cbfad decg efcdga aecgfb aegcf cgdfa gad | egfac dg gedc dga\ngadfe cfgead cdgbae cfage de dbceagf ecgafb cfed dea fgbad | ade fecag aefgc fcagbed\ndfab gaecbd degfc bcegfa dgebfa edb ebdfg dbceagf gafeb bd | gbaef bafd agcfbe bfcadeg\nedcbg dgbfc bdfecag cfegbd eg gebfda dcaeb afcdgb cgef ebg | fceabdg gdfbec beg fdbgc\nba gfbdec gacfd bfcdae caeb egbfacd cbedf edabgf bad cadbf | becfdg aecb bad efgcdb\ngba dabgfec ga fbadc dafgcb fdabg dbecaf agfceb cdag bfegd | dfeabc gab gfabd abg\nabgdf gcabfd cgabde agedfcb ab cegfda dbfeg afcgd acfb gba | bcfa dgefca dfcagb ba\nbdecf dgebfc bgcd fdgae gec cg gbacef bacefd cgedf afbecgd | abegfc egfcd cg gbedafc\ngdecbfa cd bfcagd fagec dfcae dcf adgcfe eabfd cdge gcbeaf | cd dfc dcf gcfbae\nfdecb adfce bc ecagbd bdc facgedb bfac fbged egdacf fcadbe | daefc efcgda bcd dagcfeb\nfgdba fbae bcafedg dfgebc fag cbgad gedacf gdfeb fbdage fa | dbfag fdbeacg bgedaf bfae\ndafbg abfed fe eaf degbca fegabc bafdec dcef aedbc afdcegb | fe fe ebfcag dacgefb\nadcegb cf dceab caef ebgadfc dcabfe cbdfe fbc degbf gbdfca | cf afce aecgdb cf\ncebdfag acfgbd gcbef bcf dfegc bf egacfd bfde gbfdec abceg | dbef cbf cfgde cbf\nbgfaedc gcdfb cadbge fdac bgfdac cf eabfgc bfc acdbg fgbed | cafd fbdagc bdgac cf\nfgdc fgceab edf feadg beadfc bdgae egdcfba efagc fd cdagef | fed gfdcaeb cgaef fedgca\nbfg ecabg cabdgfe fdgc fgbac dafbge gf fcdbag fadcbe fdcab | bdagecf fgbdaec fdcgeab fg\naefdgb agcfe dfeca dgecfa feg deabgfc ge gacfb defabc dceg | efg edfca egf aefcdg\nafbeg fagd adgfbe abefcdg bdefca ga gab ecdgab abefd bgfce | fgad fdag dgcbeaf ga\nfbgea ebfgdca badegc bac cb gceba eadcgf daegc gcdafb bedc | cgbdefa bc bc dabecgf\ncfbega dgba gb fbegd gdeabf bfcadeg egdcf fgb badef fdbaec | gadb facbdge cfgdbae eadbf\ngdecaf fabed bdgcae dcgfba ce bdfegca dcaeb gbcda cae ebgc | afdgce dcbegfa egdcfba bgfcad\nbcgdfa cda agecfdb cedba cafdeb caefbg abfec edcf debag cd | cda cda dc ecabd\nfdbagce abfc cageb cagfe eba gadefc dgcbe adebgf geafbc ab | ab edbagf afbc facb\ngcdfa cadeg dcaeb adcegf gfcdba fcabgde ge gfed gea gfeacb | cadgf gae dagfbc gfed\nbfegdac gcabf fdg adgfb gefdcb gd abfed gdae dfgbae befacd | dega bfgdec dfg daefbg\nacebgd ceg gcabd afcbgde ebcd afbdcg cbgea ec gbfae gdfeac | gce afbeg adcgb abedcgf\ndegfab fbade ac acdf feacb dgcbea cfbge abc dgfaecb bdecfa | adfc cdaebg ca acb\nadegcfb gf acfdbe ecfdb dgceaf dgfbe dgbae feg fcbg dfcbge | gf fg fg gf\nfbacde gfacbe eg dcge fdbga beg bedgcf dcbef fcbaedg bgfde | cged edcg bgedf ge\ndgafc dfbegc fagbed cfba adfbcg cfg cf dabfg gafcdbe dgaec | dgbface fcgad cfg fadgc\ndefcga gdfc afc cadebf bceag degaf fc gaedfb dabcgfe eagfc | adfge dgfc edcfab fgcd\ndcefb feb gcdeb efdg fcagbe becgad bfcda gabfdec fe ebfdgc | ecbagf ef dfge decbf\nfgebac faegb gcebfad fb fecga bgf ecbf abged gcefad fbgacd | fb fbeag fbega bfg\ncbdgfae fbe gdfbce egbda abedf cdfea badcge agfb edbafg fb | ebfad afbg edafbg efb\ngbdc gb cfdegba bdgae gab gcafbe fadeb ecfgda gbdace cgaed | abg dbgc dcbg gb\ndb dgefb eafdbgc ecfbg bcegdf bdg fbcd gefad ecfbag adbgce | db cabedgf dbg fgead\nab bcfa bacfed dba befad fadeg bcdaeg abcgdfe bdecfg bcfde | ba debacfg fdcbe abd\nbaecfg edgba cdgae fced cd egfdca cgd acedfgb dbfgca feagc | adceg dcaeg efdc dc\ncdb bgfeda acdeb becfda fedba dfca gbeca dbgecf dc aedcfbg | bdc egabfd cd eadbc\nefgcadb dgebf baedf gcedfa bfg gb eacgbf dgefc bdcg cgbfde | dfgbe gb gbdefca dbcg\nafebdgc gbfdc gbca defgb cdb bc bcfagd bcdfae edfgca fdacg | cbd cgab dfbgc cb\nbgfade cdgabef cfebd ce febad dgafce dce abce cgbdf edcafb | bfeadg gdfbea cabe ce\ngefbcd de dgfce gfdaecb gafec bfdcg bdge abdfgc edf dfbcea | ed fcdgab dfe edgb\ncgafeb egadbc bagce gedcafb afcbd fgae bfeac fdegbc feb fe | egcba bfe bef bcdaf\nbcdea dgbfc gdae dabcg ecdfab gca ag dcebgaf gadecb beafcg | eagd eadg bfgcd gac\ngafcb eba acbfeg cagbfd ecaf fcbedag bdcge ea cagbe fdeabg | bea aeb ae eab\ncdegfb cdagef bgf dfgcaeb eadgb fegac febga bf bfcaeg cfba | caefdgb gfb fb ebafgcd\nbgedfa dfbca ebdgcf fbgcd dfcega cgf gfbcead degfb ecbg gc | gecb cfg cg aegdfb\nagebd bcegda aeg fedabc bdgafce acgd fbgde ag caegbf cbdae | agcd egabfc dacg dgca\ncbdfe feacd geacfd dbaefg cbgfd aedfbc ceba eb bde egacfdb | bed ceba adbefgc ebd\negd ge afcbedg bfgeda bdgefc gbce bcgdf fdacbg aecfd dcgfe | cefgbd afcbgd ge cebg\nbg gacbe cefgad cbgf cbead gba fcedagb ebdafg gcfbae gacfe | gabec cedfgab acgefb dgecabf\nafedg edabg fcdg bfcega ebfdca decaf gf gfa acegfbd afedcg | dgcf efacgdb dcgf ebdfcag\n"} -->
+
+get the raw input here
+
+```elixir
+input = IO.getn("input", 999_999_999_999_999_999_999_999_999)
+```
+
+parse the input here
+
+```elixir
+displays =
+  input
+  |> String.split("\n", trim: true)
+  |> Enum.map(fn raw_display -> String.split(raw_display, [" ", "|"], trim: true) end)
+  |> Enum.map(fn digits -> Enum.chunk_every(digits, 10) end)
+  |> Enum.map(&List.to_tuple/1)
+```
+
+## Part 1
+
+```elixir
+displays
+|> Enum.map(&elem(&1, 1))
+|> Enum.map(fn output -> Enum.count(output, &(String.length(&1) in [2, 4, 3, 7])) end)
+|> Enum.sum()
+```
+
+## Part 2
+
+```elixir
+defmodule Day8 do
+  @simple_pattern_lengths %{
+    1 => 2,
+    4 => 4,
+    7 => 3,
+    8 => 7
+  }
+
+  @initial_segment_mapping Map.new(?a..?g, fn segment -> {segment, ?a..?g} end)
+
+  defmacro simple_pattern_length(digit) do
+    length = @simple_pattern_lengths[digit]
+
+    quote do
+      unquote(length)
+    end
+  end
+
+  def deduce_display(display) do
+    {patterns, output} = display
+
+    segment_mapping =
+      patterns
+      |> find_all_simple_patterns()
+      |> Enum.reduce(@initial_segment_mapping, fn {digit, pattern}, segment_mapping ->
+        update_segment_mapping(segment_mapping, pattern, digit)
+      end)
+
+    pattern_mapping = create_initial_pattern_mapping(patterns)
+
+    {pattern_mapping, _} =
+      patterns
+      |> Stream.cycle()
+      |> Enum.reduce_while({pattern_mapping, segment_mapping}, fn pattern,
+                                                                  {pattern_mapping,
+                                                                   segment_mapping} ->
+        pattern_mapping =
+          Map.update!(pattern_mapping, pattern, fn numbers ->
+            Enum.filter(numbers, fn number ->
+              has_valid_segment_combination?(pattern, number, segment_mapping)
+            end)
+          end)
+
+        segment_mapping = update_segment_mapping(segment_mapping, pattern_mapping)
+
+        if Enum.all?(pattern_mapping, fn {_, x} -> length(x) == 1 end) do
+          {:halt, {pattern_mapping, segment_mapping}}
+        else
+          {:cont, {pattern_mapping, segment_mapping}}
+        end
+      end)
+
+    output
+    |> Enum.map(fn output_pattern ->
+      Enum.find(pattern_mapping, fn {pattern, _} ->
+        sort_pattern(pattern) == sort_pattern(output_pattern)
+      end)
+    end)
+    |> Enum.map(fn {_, [digit]} -> digit end)
+    |> Enum.map(&Integer.to_string/1)
+    |> Enum.join()
+    |> String.to_integer()
+  end
+
+  defp sort_pattern(pattern), do: pattern |> String.to_charlist() |> Enum.sort()
+
+  defp has_valid_segment_combination?(pattern, number, segment_mapping) when is_binary(pattern) do
+    digit_segments = segments_to_display(number)
+
+    segments_to_analyze = Map.take(segment_mapping, digit_segments)
+
+    pattern
+    |> String.to_charlist()
+    |> has_valid_segment_combination?(segments_to_analyze)
+  end
+
+  defp has_valid_segment_combination?([segment | pattern], segments_to_analyze) do
+    segments_to_analyze
+    |> Enum.filter(fn {_, possible_segments} -> segment in possible_segments end)
+    |> Map.new()
+    |> case do
+      possibilities when map_size(possibilities) == 0 ->
+        false
+
+      possibilities ->
+        Enum.any?(possibilities, fn {display_segment, _} ->
+          has_valid_segment_combination?(
+            pattern,
+            Map.delete(segments_to_analyze, display_segment)
+          )
+        end)
+    end
+  end
+
+  defp has_valid_segment_combination?([], _), do: true
+
+  defp create_initial_pattern_mapping(patterns) do
+    complicated_patterns_mapping =
+      patterns
+      |> find_all_complicated_patterns()
+      |> Map.new(fn pattern ->
+        possible_digits =
+          case String.length(pattern) do
+            5 -> [2, 3, 5]
+            6 -> [0, 6, 9]
+            2 -> [1]
+            4 -> [4]
+            3 -> [7]
+            7 -> [8]
+          end
+
+        {pattern, possible_digits}
+      end)
+
+    simple_patterns_mapping =
+      patterns
+      |> find_all_simple_patterns()
+      |> Map.new(fn {digit, pattern} -> {pattern, [digit]} end)
+
+    Map.merge(complicated_patterns_mapping, simple_patterns_mapping)
+  end
+
+  defp find_all_complicated_patterns(patterns) do
+    patterns_set = MapSet.new(patterns)
+
+    simple_patterns_set =
+      patterns
+      |> find_all_simple_patterns()
+      |> Enum.map(&elem(&1, 1))
+      |> MapSet.new()
+
+    MapSet.difference(patterns_set, simple_patterns_set)
+  end
+
+  defp find_all_simple_patterns(patterns) do
+    [1, 4, 7, 8]
+    |> Enum.map(fn digit -> {digit, find_simple_pattern(patterns, digit)} end)
+  end
+
+  defp find_simple_pattern(patterns, digit) do
+    Enum.find(patterns, &has_corresponding_length?(&1, digit))
+  end
+
+  defp has_corresponding_length?(pattern, digit),
+    do: String.length(pattern) == @simple_pattern_lengths[digit]
+
+  defp update_segment_mapping(segment_mapping, pattern_mapping) do
+    pattern_mapping
+    |> Enum.reduce(segment_mapping, fn {pattern, digits}, segment_mapping ->
+      pattern_charlist =
+        pattern
+        |> String.to_charlist()
+
+      case digits do
+        [digit] ->
+          digit
+          |> segments_to_display()
+          |> Enum.reduce(segment_mapping, fn display_segment, segment_mapping ->
+            Map.update!(segment_mapping, display_segment, fn segments ->
+              Enum.filter(segments, fn segment -> segment in pattern_charlist end)
+            end)
+          end)
+
+        _ ->
+          segment_mapping
+      end
+    end)
+  end
+
+  defp update_segment_mapping(segment_mapping, pattern, digit)
+       when is_binary(pattern) and is_integer(digit) do
+    segments_in_pattern = String.to_charlist(pattern)
+
+    digit
+    |> segments_to_display()
+    |> Enum.reduce(segment_mapping, fn segment, segment_mapping ->
+      update_segment_mapping(segment_mapping, segment, segments_in_pattern)
+    end)
+  end
+
+  defp update_segment_mapping(segment_mapping, segment, segments_in_pattern)
+       when is_integer(segment) and is_list(segments_in_pattern) do
+    Map.update!(segment_mapping, segment, fn possible_segments ->
+      Enum.filter(possible_segments, &(&1 in segments_in_pattern))
+    end)
+  end
+
+  defp segments_to_display(0), do: [?a, ?b, ?c, ?e, ?f, ?g]
+  defp segments_to_display(1), do: [?c, ?f]
+  defp segments_to_display(2), do: [?a, ?c, ?d, ?e, ?g]
+  defp segments_to_display(3), do: [?a, ?c, ?d, ?f, ?g]
+  defp segments_to_display(4), do: [?b, ?c, ?d, ?f]
+  defp segments_to_display(5), do: [?a, ?b, ?d, ?f, ?g]
+  defp segments_to_display(6), do: [?a, ?b, ?d, ?e, ?f, ?g]
+  defp segments_to_display(7), do: [?a, ?c, ?f]
+  defp segments_to_display(8), do: [?a, ?b, ?c, ?d, ?e, ?f, ?g]
+  defp segments_to_display(9), do: [?a, ?b, ?c, ?d, ?f, ?g]
+end
+
+displays
+|> Enum.map(&Day8.deduce_display/1)
+|> Enum.sum()
+```
